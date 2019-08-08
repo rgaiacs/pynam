@@ -6,7 +6,11 @@
 <body>
 
 <h1>My Site - Blog</h1>
-<p>My first Django application.</p>
+{% for post in posts %}
+<h2>
+    <a href="/blog/{{ post.title }}">{{ post.title }}</a>
+</h2>
+{% endfor %}
 
 </body>
 </html>
