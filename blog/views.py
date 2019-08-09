@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from .models import Post
 
@@ -15,11 +15,10 @@ def index(request):
     )
 
 def blog(request, title):
-    post = Post.objects.get(
+    post = get_object_or_404(
+        Post,
         title__iexact=title
     )
-
-    print(post)
 
     return render(
         request,
