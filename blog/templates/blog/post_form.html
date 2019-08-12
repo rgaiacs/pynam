@@ -9,10 +9,7 @@
 
 <form action="." method="post">
     {% csrf_token %}
-    Title:<br>
-    <input type="text" name="title"><br>
-    Text:<br>
-    <input type="text" name="text"><br>
+    {{ form }}
     <input type="submit" value="Submit">
 <form></form>
 </article>

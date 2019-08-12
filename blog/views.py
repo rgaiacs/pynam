@@ -2,6 +2,7 @@
 from django.shortcuts import get_object_or_404, render, redirect
 
 from .models import Post
+from .forms import PostForm
 
 # Create your views here.
 def index(request):
@@ -16,17 +17,20 @@ def index(request):
     )
 
 def blog_form(request):
+    form = PostForm(
+        request.POST if request.POST else None
+    )
     if request.POST:
-        post = Post(
-            title=request.POST["title"],
-            text=request.POST["text"]
-        )
-        post.save()
-        return redirect('blog', title=post.title)
+        if form.is_valid():
+            post = form.save()
+            return redirect('blog', title=post.title)
 
     return render(
         request,
         'blog/post_form.html',
+        {
+            "form": form,
+        }
     )
 
 def blog(request, title):
