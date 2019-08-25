@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>My Site - Blog</title>
-</head>
-<body>
+{% extends 'blog/base.html' %}
 
+{% block content %}
 <h1>My Site - Blog</h1>
 {% for post in posts %}
 <h2>
     <a href="/blog/{{ post.title }}">{{ post.title }}</a>
 </h2>
 {% endfor %}
-
-</body>
-</html>
+{% endblock %}

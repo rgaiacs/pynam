@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>My Site - Blog - {{ post.title }}</title>
-</head>
-<body>
+{% extends 'blog/base.html' %}
+
+{% block content %}
 <article>
 <h1>{{ post.title }}</h1>
 
 {{ post.text|linebreaks }}
 </article>
-</body>
-</html>
+{% endblock %}
