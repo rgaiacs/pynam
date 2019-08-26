@@ -6,7 +6,9 @@ from .forms import PostForm
 
 # Create your views here.
 def index(request):
-    posts = Post.objects.all()
+    posts = Post.objects.filter(
+        published_date__isnull=False
+    )
 
     return render(
         request,
@@ -36,7 +38,8 @@ def blog_form(request):
 def blog(request, title):
     post = get_object_or_404(
         Post,
-        title__iexact=title
+        title__iexact=title,
+        published_date__isnull=False
     )
 
     return render(
